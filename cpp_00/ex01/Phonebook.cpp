@@ -6,13 +6,28 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/20 13:48:12 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 11:11:48 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 
 PhoneBook::PhoneBook() : contact_count(0), index(0) {}
+
+std::string trunc(std::string s)
+{
+	if (s.size()<11)
+		return s;
+	std::string res = "          ";
+	for(int i=0;i<10;i++)
+	{
+		res[i] = s[i];
+	}
+	std::string p = ".";
+	res += p;
+	return res;
+}
+
 void PhoneBook::add_contact()
 {
     std::string fname, lname, nname, num, dsec;
@@ -29,6 +44,10 @@ void PhoneBook::add_contact()
         std::getline(std::cin, num);
         std::cout << "Enter Darkest Secret : ";
         std::getline(std::cin, dsec);
+		fname = trunc(fname);
+		lname = trunc(lname);
+		nname = trunc(nname);
+		num = trunc(num);
         if (!fname.empty() && !lname.empty() && !nname.empty() && !num.empty() && !dsec.empty())
             break;
         std::cout << "No field should be empty. Please try again.\n";
@@ -64,6 +83,10 @@ void PhoneBook::searchContact()
 		std::cout<<"Enter wich index you'd like to view\n";
 		int x=0;
 		std::cin>>x;
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
 		if (x <= index)
 		{
 			std::cout<<std::setw(10)<<x<<"|";

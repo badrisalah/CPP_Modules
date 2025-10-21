@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 04:11:55 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/20 13:46:17 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 11:03:58 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int main() {
 			phoneBook.searchContact();
 		else if (command == "EXIT")
 			break;
-		else
-			std::cout << "Try again." << std::endl;
 	}
 	std::cout << "Goodbye! All contacts lost forever..." << std::endl;
 	return 0;
