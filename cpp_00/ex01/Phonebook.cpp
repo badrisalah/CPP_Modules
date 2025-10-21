@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/21 13:02:20 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:12:04 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void PhoneBook::add_contact()
         }
         std::cout << "Input Error\n";
     }
+	
     contacts[index].set_name(trunc(fname));
     contacts[index].set_lname(trunc(lname));
     contacts[index].set_nname(trunc(nname));
