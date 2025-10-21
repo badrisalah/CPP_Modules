@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/21 11:11:48 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:31:34 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,54 @@
 
 PhoneBook::PhoneBook() : contact_count(0), index(0) {}
 
+void Contact::set_name(std::string name)
+{
+	Name = name;
+}
+void Contact::set_lname(std::string lname)
+{
+	LastName = lname;
+}
+void Contact::set_nname(std::string nname)
+{
+	NickName = nname;
+}
+void Contact::set_num(std::string number)
+{
+	Number = number;
+}
+void Contact::set_dsec(std::string dsecret)
+{
+	DarkestSecret = dsecret;
+}
+std::string Contact::get_fname()  {
+	return Name;
+}
+std::string Contact::get_lname()  {
+	return LastName;
+}
+std::string Contact::get_nname()  {
+	return NickName;
+}
+std::string Contact::get_num()  {
+	return Number;
+}
+std::string Contact::get_dsec()  {
+	return DarkestSecret;
+}
+void Contact::display(){
+	std::cout << "First Name: " << Name << "\n";
+	std::cout << "Last Name: " << LastName << "\n";
+	std::cout << "Nickname: " << NickName << "\n";
+	std::cout << "Phone Number: " << Number << "\n";
+	std::cout << "Darkest Secret: " << DarkestSecret << "\n";
+}
 std::string trunc(std::string s)
 {
 	if (s.size()<11)
 		return s;
 	std::string res = "          ";
-	for(int i=0;i<10;i++)
+	for(int i=0;i<9;i++)
 	{
 		res[i] = s[i];
 	}
