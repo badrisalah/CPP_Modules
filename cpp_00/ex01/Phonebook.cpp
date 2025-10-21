@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/21 12:33:56 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:02:20 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,17 @@ std::string trunc(std::string s)
 	return res;
 }
 
+int numcheck(std::string s)
+{
+	size_t j = s.size();
+	for(size_t i=0;i<j;i++)
+	{
+		if (s[i] > '9' || s[i] < '1')
+			return 1;
+	}
+	return 0;
+}
+
 void PhoneBook::add_contact()
 {
     std::string fname, lname, nname, num, dsec;
@@ -106,19 +117,19 @@ void PhoneBook::add_contact()
 			std::cout << std::endl;
 			return ;
 		}
-		fname = trunc(fname);
-		lname = trunc(lname);
-		nname = trunc(nname);
-		num = trunc(num);
-        if (!fname.empty() && !lname.empty() && !nname.empty() && !num.empty() && !dsec.empty())
+        if (!fname.empty() && !lname.empty() && !nname.empty() &&
+            !num.empty() && !dsec.empty() &&
+            !numcheck(num))
+        {
             break;
-        std::cout << "No field should be empty. Please try again.\n";
+        }
+        std::cout << "Input Error\n";
     }
-    contacts[index].set_name(fname);
-    contacts[index].set_lname(lname);
-    contacts[index].set_nname(nname);
-    contacts[index].set_num(num);
-    contacts[index].set_dsec(dsec);
+    contacts[index].set_name(trunc(fname));
+    contacts[index].set_lname(trunc(lname));
+    contacts[index].set_nname(trunc(nname));
+    contacts[index].set_num(trunc(num));
+    contacts[index].set_dsec(trunc(dsec));
     if (contact_count < 8)
         contact_count++;
     index = (index + 1) % 8;
@@ -134,6 +145,7 @@ void PhoneBook::searchContact()
 	}
 	else
 	{
+		std::cout<<"  index   |first name| last name| nickname |"<<std::endl;
 		for(int i=0;i<index;i++)
 		{
 			std::cout<<std::setw(10)<<i<<"|";
