@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/21 12:31:34 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/21 12:33:56 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,34 @@ void PhoneBook::add_contact()
     {
         std::cout << "Enter First Name : ";
         std::getline(std::cin, fname);
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
         std::cout << "Enter Last Name : ";
         std::getline(std::cin, lname);
-        std::cout << "Enter NickName : ";
+        if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
+		std::cout << "Enter NickName : ";
         std::getline(std::cin, nname);
-        std::cout << "Enter Number : ";
+        if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
+		std::cout << "Enter Number : ";
         std::getline(std::cin, num);
-        std::cout << "Enter Darkest Secret : ";
+        if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
+		std::cout << "Enter Darkest Secret : ";
         std::getline(std::cin, dsec);
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			return ;
+		}
 		fname = trunc(fname);
 		lname = trunc(lname);
 		nname = trunc(nname);
