@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 11:16:07 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/23 19:45:24 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/10/25 13:16:02 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit){}
+Account::Account(int initial_deposit)
+	: _accountIndex(_nbAccounts),_amount(initial_deposit),
+	_nbDeposits(0), _nbWithdrawals(0){
+		_totalAmount += initial_deposit;
+		_nbAccounts+=1;
+	}
 
 int Account::getNbAccounts(void) {
 	return _nbAccounts;
@@ -44,4 +49,8 @@ void Account::displayAccountsInfos(void) {
 			  << "deposits:" << getNbDeposits() << ";"
 			  << "withdrawals:" << getNbWithdrawals()
 			  << std::endl;
+}
+
+int Account::checkAmount(void) const {
+	return _amount;
 }
