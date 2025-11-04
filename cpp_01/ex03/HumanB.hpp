@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 05:15:20 by sabadri           #+#    #+#             */
-/*   Updated: 2025/11/04 05:15:21 by sabadri          ###   ########.fr       */
+/*   Created: 2025/11/04 05:15:12 by sabadri           #+#    #+#             */
+/*   Updated: 2025/11/04 05:15:13 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
-#include <iostream>
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
-HumanB::HumanB(const std::string& name) : name(name), weapon(NULL) {}
+#include <string>
+#include "Weapon.hpp"
 
-HumanB::~HumanB() {}
+class HumanB {
+private:
+    std::string name;
+    Weapon* weapon;
 
-void HumanB::setWeapon(Weapon& w) {
-    weapon = &w;
-}
+public:
+    HumanB(const std::string& name);
+    ~HumanB();
 
-void HumanB::attack() const {
-    if (weapon)
-        std::cout << name << " attacks with their " << weapon->getType() << std::endl;
-    else
-        std::cout << name << " has no weapon to attack with" << std::endl;
-}
+    void setWeapon(Weapon& w);
+    void attack() const;
+};
+
+#endif
