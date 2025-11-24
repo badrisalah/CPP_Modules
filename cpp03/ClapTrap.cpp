@@ -74,3 +74,13 @@ void ClapTrap::beRepaired(unsigned int amount)
               << " HP! HP now: " << _hitPoints << std::endl;
 }
 
+ClapTrap& operator=(const ClapTrap& other)
+{
+	if (this != &other){
+    		_name = other._name;
+    		_hitpoints = other._hitpoints;
+    		_energypoints = other._energypoints;
+    		_attackdamage = other._attackdamage;
+	}
+}
+
