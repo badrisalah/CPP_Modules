@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 03:36:02 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/13 03:53:18 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/11/29 23:35:23 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 int	main(int ac, char **av)
 {
-	if (ac != 2)
-		return 1;
-	int i = 0;
-	while (av[1][i])
+	if (ac == 1)
+		return (std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *"<<std::endl,1);
+	int i = 1;
+	int j;
+	while (av[i])
 	{
-		if (av[1][i] >= 'a' && av[1][i] <= 'z')
-			std::cout<<(char)(av[1][i] - 32);
-		else
-			std::cout<<av[1][i];
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] >= 'a' && av[i][j] <= 'z')
+				std::cout<<(char)toupper(av[i][j]);
+			else
+				std::cout<<av[i][j];
+			j++;
+		}
 		i++;
 	}
 	std::cout<<"\n";
