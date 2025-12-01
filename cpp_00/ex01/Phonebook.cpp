@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/22 10:07:49 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/01 01:56:27 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void PhoneBook::searchContact()
                   << std::setw(10) << contacts[i].get_nname() << "|\n";
     }
 
-    int x = -1;
+    int x;
     std::cout << "Enter which index you'd like to view: ";
     std::cin >> x;
 
