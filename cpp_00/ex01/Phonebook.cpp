@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 16:43:51 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 16:45:30 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ std::string trunc(std::string s)
 {
 	if (s.size()<11)
 		return s;
-	std::string res = "          ";
+	std::string res = "         ";
 	for(int i=0;i<9;i++)
 	{
 		res[i] = s[i];
