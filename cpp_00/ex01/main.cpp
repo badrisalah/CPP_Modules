@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 04:11:55 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/04 03:05:05 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:39:20 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main() {
 	std::string command;
 
 	std::cout << " Welcome to My Awesome PhoneBook!" << std::endl;
+
 
 	while (true)
 	{
@@ -33,7 +34,6 @@ int main() {
 			phoneBook.searchContact();
 		else if (command == "EXIT")
 			break;
-		std::cin.ignore(1, '\n');
 	}
 	std::cout << "! All contacts lost forever..." << std::endl;
 	return 0;

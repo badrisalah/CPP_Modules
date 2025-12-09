@@ -7,7 +7,7 @@ NAME     = account
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Account.hpp
 	$(C++) $(C++FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp

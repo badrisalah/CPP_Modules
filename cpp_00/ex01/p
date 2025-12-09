@@ -1,12 +1,74 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   p                                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/17 04:11:55 by sabadri           #+#    #+#             */
+/*   Updated: 2025/12/09 14:45:37 by sabadri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Phonebook.hpp"
+
+int main() {
+	PhoneBook phoneBook;
+	std::string command;
+
+	std::cout << " Welcome to My Awesome PhoneBook!" << std::endl;
+
+	while (true)
+	{
+		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+		std::cin>>command;
+
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			break;
+		}
+		if (command == "ADD")
+			phoneBook.add_contact();
+		else if (command == "SEARCH")
+			phoneBook.searchContact();
+		else if (command == "EXIT")
+			break;
+	}
+	std::cout << "! All contacts lost forever..." << std::endl;
+	return 0;
+}
+
+NAME = phonebook
+C++ = c++
+C++FLAGS = -Wall -Wextra -Werror -std=c++98
+
+SRCS = main.cpp Phonebook.cpp
+OBJS = $(SRCS:.cpp=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(C++) $(C++FLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp Phonebook.hpp
+	$(C++) $(C++FLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 14:46:17 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:35:37 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +221,7 @@ void PhoneBook::add_contact()
     std::cout << "\n Contact added successfully!\n";
 }
 
+
 void PhoneBook::searchContact()
 {
     if (index == 0)
@@ -207,3 +270,54 @@ void PhoneBook::searchContact()
     }
 }
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 03:44:20 by sabadri           #+#    #+#             */
+/*   Updated: 2025/10/22 09:38:45 by sabadri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+#include <iostream>
+#include <iomanip>
+
+class Contact {
+	private :
+		std::string Name;
+		std::string LastName;
+		std::string NickName;
+		std::string Number;
+		std::string DarkestSecret;
+	public :
+		void set_name(std::string name);
+		void set_lname(std::string lname);
+		void set_nname(std::string nname);
+		void set_num(std::string number);
+		void set_dsec(std::string dsecret);
+		std::string get_fname();
+		std::string get_lname();
+		std::string get_nname();
+		std::string get_num();
+		std::string get_dsec();
+		void display();
+};
+
+class PhoneBook {
+	private :
+		Contact contacts[8];
+		int contact_count;
+		int index;
+	public :
+		PhoneBook();
+		void add_contact();
+		void searchContact();
+};
+
+#endif
