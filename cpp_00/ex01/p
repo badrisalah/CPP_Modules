@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p                                                  :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 04:11:55 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 14:45:37 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:39:20 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int main() {
 
 	std::cout << " Welcome to My Awesome PhoneBook!" << std::endl;
 
+
 	while (true)
 	{
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-		std::cin>>command;
+		std::getline(std::cin, command);
 
 		if (std::cin.eof()) {
 			std::cout << std::endl;
@@ -68,7 +69,7 @@ re: fclean all
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 14:35:37 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 16:35:22 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +195,7 @@ void PhoneBook::add_contact()
         std::getline(std::cin, dsec);
         if (std::cin.eof()) { std::cout << std::endl; return; }
 
-        // validation
-        if (!fname.empty() && !lname.empty() && !nname.empty() &&
+		if (!fname.empty() && !lname.empty() && !nname.empty() &&
             !num.empty() && !dsec.empty() &&
             !numcheck(num) && prntcheck(fname,lname,nname,dsec))
         {
@@ -220,7 +220,6 @@ void PhoneBook::add_contact()
 
     std::cout << "\n Contact added successfully!\n";
 }
-
 
 void PhoneBook::searchContact()
 {
@@ -278,7 +277,7 @@ void PhoneBook::searchContact()
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 03:44:20 by sabadri           #+#    #+#             */
-/*   Updated: 2025/10/22 09:38:45 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 14:45:53 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 14:46:17 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/09 16:43:51 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,7 @@ void PhoneBook::add_contact()
         std::getline(std::cin, dsec);
         if (std::cin.eof()) { std::cout << std::endl; return; }
 
-        // validation
-        if (!fname.empty() && !lname.empty() && !nname.empty() &&
+		if (!fname.empty() && !lname.empty() && !nname.empty() &&
             !num.empty() && !dsec.empty() &&
             !numcheck(num) && prntcheck(fname,lname,nname,dsec))
         {
@@ -161,49 +160,46 @@ void PhoneBook::add_contact()
 
 void PhoneBook::searchContact()
 {
-    if (index == 0)
+    if (contact_count == 0)
     {
         std::cout << "Empty contact\n";
         return;
     }
+
     std::cout << "---------------------------------------------\n";
     std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
-              << std::setw(10) << "Nickname" << "|\n";
+              << std::setw(10) << "Nickname"   << "|\n";
     std::cout << "---------------------------------------------\n";
-    for (int i = 0; i < index; i++)
+
+    for (int i = 0; i < contact_count; i++)
     {
         std::cout << std::setw(10) << i << "|"
                   << std::setw(10) << contacts[i].get_fname() << "|"
                   << std::setw(10) << contacts[i].get_lname() << "|"
                   << std::setw(10) << contacts[i].get_nname() << "|\n";
     }
+
     std::string input;
     std::cout << "Enter which index you'd like to view: ";
     std::getline(std::cin, input);
-    if (std::cin.eof())
-    {
-        std::cout << std::endl;
-        return;
-    }
+    if (std::cin.eof()) { std::cout << std::endl; return; }
+
     if (input.length() != 1 || !isdigit(input[0]))
     {
         std::cout << "Invalid input. Please enter a number.\n";
         return;
     }
+
     int x = input[0] - '0';
-    if (x >= 0 && x < index)
+
+    if (x >= 0 && x < contact_count)
     {
-        std::cout << "First Name: " << contacts[x].get_fname() << std::endl;
-        std::cout << "Last Name: " << contacts[x].get_lname() << std::endl;
-        std::cout << "Nickname: " << contacts[x].get_nname() << std::endl;
-        std::cout << "Number: " << contacts[x].get_num() << std::endl;
-        std::cout << "Darkest Secret: " << contacts[x].get_dsec() << std::endl;
+        contacts[x].display();
     }
     else
     {
-        std::cout << "Index must be between 0 and " << (index - 1) << ".\n";
+        std::cout << "Index must be between 0 and " << (contact_count - 1) << ".\n";
     }
 }
-
