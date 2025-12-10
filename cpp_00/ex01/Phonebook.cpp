@@ -6,7 +6,7 @@
 /*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 10:28:54 by sabadri           #+#    #+#             */
-/*   Updated: 2025/12/09 16:45:30 by sabadri          ###   ########.fr       */
+/*   Updated: 2025/12/10 08:59:06 by sabadri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,19 +140,13 @@ void PhoneBook::add_contact()
         }
         std::cout << "Input Error\n";
     }
-
-    // store data
     contacts[index].set_name(trunc(fname));
     contacts[index].set_lname(trunc(lname));
     contacts[index].set_nname(trunc(nname));
     contacts[index].set_num(trunc(num));
     contacts[index].set_dsec(trunc(dsec));
-
-    // increase stored number count (max 8)
     if (contact_count < 8)
         contact_count++;
-
-    // move index (0–7 circular)
     index = (index + 1) % 8;
 
     std::cout << "\n Contact added successfully!\n";
