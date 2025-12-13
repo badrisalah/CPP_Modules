@@ -1,17 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sabadri <sabadri@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 01:29:30 by sabadri           #+#    #+#             */
-/*   Updated: 2025/11/03 01:29:43 by sabadri          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "zombie.hpp"
 
-#include "Zombie.hpp"
-
-Zombie* newZombie(std::string name) {
-    return new Zombie(name);
+Zombie *newZombie( std::string name )
+{
+	Zombie *z = new Zombie(name);
+	z->announce();
+	return z;
 }
